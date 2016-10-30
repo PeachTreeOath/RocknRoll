@@ -45,9 +45,11 @@ public class HeroAttackSector : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D col)
     {
         attackPerformedThisFrame = true;
         //TODO: change this to deal with only enemies
+        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 650));
     }
 
     private void ReadyAttack(bool enabled)
