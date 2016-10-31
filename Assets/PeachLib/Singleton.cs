@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Unity singleton implementation. Call SetDontDestroy() to persist objects between scenes.
 public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
 
@@ -18,7 +19,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
 
-    private void SetDontDestroy()
+    protected void SetDontDestroy()
     {
         DontDestroyOnLoad(gameObject);
     }
