@@ -5,9 +5,10 @@ public class HeroAttackSector : MonoBehaviour
 {
 
     public float autoAttackCooldown = 2;
+    public float impulseStrength;
 
     private float lastAttackTime;
-    private bool attackPerformedThisFrame;
+    private bool attackReady;
 
     //TODO clean this up
     private Material yellowMat;
@@ -30,26 +31,21 @@ public class HeroAttackSector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastAttackTime > autoAttackCooldown)
+        if (!attackReady && Time.time - lastAttackTime > autoAttackCooldown)
         {
             ReadyAttack(true);
         }
     }
 
-    void LateUpdate()
-    {
-        if (attackPerformedThisFrame)
-        {
-            ReadyAttack(false);
-            attackPerformedThisFrame = false;
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D col)
     {
-        attackPerformedThisFrame = true;
-        //TODO: change this to deal with only enemies
-        col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 650));
+        if (attackReady)
+        {
+            lastAttackTime = Time.time;
+            //TODO: change this to deal with only enemies
+            col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, impulseStrength), ForceMode2D.Impulse);
+            ReadyAttack(false);
+        }
     }
 
     private void ReadyAttack(bool enabled)
@@ -62,6 +58,6 @@ public class HeroAttackSector : MonoBehaviour
         {
             spriteRenderer.material = yellowMat;
         }
-        col.enabled = enabled;
+        attackReady = enabled;
     }
 }

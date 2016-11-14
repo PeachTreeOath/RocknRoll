@@ -251,7 +251,7 @@ Rigidbody2D:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &1326036200
 CircleCollider2D:
@@ -278,7 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a6c6c2cae28b549af7a47d53bb9f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoAttackCooldown: 2
+  autoAttackCooldown: 1.4
+  impulseStrength: 15
 --- !u!212 &1326036202
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -358,7 +359,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &1621445693
 SpriteRenderer:
