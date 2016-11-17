@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HeroAttackSector : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class HeroAttackSector : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Collider2D col;
 
+    private List<GameObject> collidedList;
+
     // Use this for initialization
     void Start()
     {
@@ -24,6 +27,7 @@ public class HeroAttackSector : MonoBehaviour
         greenMat = Resources.Load<Material>("Materials/GreenMat");
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+        collidedList = new List<GameObject>();
 
         ReadyAttack(true);
     }
@@ -31,20 +35,40 @@ public class HeroAttackSector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!attackReady && Time.time - lastAttackTime > autoAttackCooldown)
         {
             ReadyAttack(true);
+        }
+     
+        if (attackReady && collidedList.Count > 0)
+        {
+
+            lastAttackTime = Time.time;
+            foreach(GameObject attackedObj in collidedList)
+            {
+                Vector2 direction = attackedObj.transform.position - transform.position;
+                attackedObj.GetComponent<IAttackable>().ReceiveAttack(direction.normalized, impulseStrength);
+            }
+            ReadyAttack(false);
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (attackReady)
+        IAttackable obj = col.GetComponent<IAttackable>();
+        if (obj != null)
         {
-            lastAttackTime = Time.time;
-            //TODO: change this to deal with only enemies
-            col.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, impulseStrength), ForceMode2D.Impulse);
-            ReadyAttack(false);
+            collidedList.Add(col.gameObject);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        IAttackable obj = col.GetComponent<IAttackable>();
+        if (obj != null)
+        {
+            collidedList.Remove(col.gameObject);
         }
     }
 
