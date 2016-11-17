@@ -50,6 +50,7 @@ public class HeroAttackSector : MonoBehaviour
                 Vector2 direction = attackedObj.transform.position - transform.position;
                 attackedObj.GetComponent<IAttackable>().ReceiveAttack(direction.normalized, impulseStrength);
             }
+            collidedList.Clear();
             ReadyAttack(false);
         }
     }
