@@ -284,7 +284,7 @@ Prefab:
     - target: {fileID: 58000014158038638, guid: 2934cc4e6b1b3aa419857bec8fecbdd1,
         type: 2}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1000014093151866, guid: 2934cc4e6b1b3aa419857bec8fecbdd1, type: 2}
       propertyPath: m_Layer
