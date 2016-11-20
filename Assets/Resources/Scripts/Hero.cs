@@ -44,7 +44,7 @@ public class Hero : MonoBehaviour
     private void UseActive()
     {
         transform.localScale *= 2;
-        Invoke("StopActive", 2f);
+        Invoke("StopActive", 1f);
     }
 
     private void StopActive()
