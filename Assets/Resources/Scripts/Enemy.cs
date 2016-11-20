@@ -19,8 +19,10 @@ public class Enemy : MonoBehaviour, IAttackable
 
     }
 
-    public void ReceiveAttack(Vector2 direction, float impulseStrength)
+    public void ReceiveAttack(Vector2 direction, float impulseStrength, float jitterScale)
     {
-        rBody.AddForce(direction * impulseStrength, ForceMode2D.Impulse);
+        Vector2 jitterVector = UnityEngine.Random.insideUnitCircle * jitterScale;
+        rBody.velocity = jitterVector + direction + (direction.normalized * impulseStrength);
+        //rBody.AddForce(direction * impulseStrength, ForceMode2D.Impulse);
     }
 }

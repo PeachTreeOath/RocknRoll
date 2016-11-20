@@ -7,6 +7,7 @@ public class HeroAttackSector : MonoBehaviour
 
     public float autoAttackCooldown = 2;
     public float impulseStrength;
+    public float jitterScale = .1f;
 
     private float lastAttackTime;
     private bool attackReady;
@@ -48,7 +49,7 @@ public class HeroAttackSector : MonoBehaviour
             foreach(GameObject attackedObj in collidedList)
             {
                 Vector2 direction = attackedObj.transform.position - transform.position;
-                attackedObj.GetComponent<IAttackable>().ReceiveAttack(direction.normalized, impulseStrength);
+                attackedObj.GetComponent<IAttackable>().ReceiveAttack(direction, impulseStrength, jitterScale);
             }
             collidedList.Clear();
             ReadyAttack(false);
