@@ -1,23 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hero : MonoBehaviour {
+public class Hero : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private bool isMenuShowing;
+
+    private Canvas canvas;
+
+    // Use this for initialization
+    void Start()
+    {
+        canvas = GetComponent<Canvas>();
+        canvas.enabled = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnMouseOver()
     {
+        if (InputController.instance.GetLeftClick())
+        {
+            ToggleMenu();
+        }
         if (InputController.instance.GetRightClick())
         {
             UseActive();
+        }
+    }
+
+    private void ToggleMenu()
+    {
+        isMenuShowing = !isMenuShowing;
+
+        if(isMenuShowing)
+        {
+
+            canvas.enabled = isMenuShowing;
         }
     }
 
