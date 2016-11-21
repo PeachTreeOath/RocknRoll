@@ -4,15 +4,14 @@ using System.Collections;
 public class Hero : MonoBehaviour
 {
 
-    private bool isMenuShowing;
+    public GameObject menu;
 
-    private Canvas canvas;
+    private bool isMenuShowing;
 
     // Use this for initialization
     void Start()
     {
-        canvas = GetComponent<Canvas>();
-        canvas.enabled = false;
+        InputController.instance.RegisterHero(this);
     }
 
     // Update is called once per frame
@@ -25,7 +24,7 @@ public class Hero : MonoBehaviour
     {
         if (InputController.instance.GetLeftClick())
         {
-            ToggleMenu();
+            ToggleMenu(!isMenuShowing);
         }
         if (InputController.instance.GetRightClick())
         {
@@ -33,14 +32,13 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void ToggleMenu()
+    public void ToggleMenu(bool toggle)
     {
-        isMenuShowing = !isMenuShowing;
+        isMenuShowing = toggle;
 
         if(isMenuShowing)
         {
-
-            canvas.enabled = isMenuShowing;
+            menu.SetActive(isMenuShowing);
         }
     }
 
