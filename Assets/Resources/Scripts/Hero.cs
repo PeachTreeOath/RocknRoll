@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
+using System;
 
-public class Hero : MonoBehaviour
+public class Hero : MonoBehaviour, IPointerClickHandler
 {
 
     public GameObject menu;
@@ -21,22 +23,9 @@ public class Hero : MonoBehaviour
 
     }
 
-    void OnMouseOver()
-    {
-        if (InputController.instance.GetLeftClick())
-        {
-            InputController.instance.ClearMenuSelection();
-            ToggleMenu(!isMenuShowing);
-        }
-        if (InputController.instance.GetRightClick())
-        {
-            InputController.instance.ClearMenuSelection();
-            UseActive();
-        }
-    }
-
     public void ToggleMenu(bool toggle)
     {
+        Debug.Log(isMenuShowing +" "+ toggle);
         isMenuShowing = toggle;
         menu.SetActive(isMenuShowing);
     }
@@ -50,5 +39,19 @@ public class Hero : MonoBehaviour
     private void StopActive()
     {
         transform.localScale /= 2;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            InputController.instance.ClearMenuSelection();
+            ToggleMenu(!isMenuShowing);
+        }
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            InputController.instance.ClearMenuSelection();
+            UseActive();
+        }
     }
 }

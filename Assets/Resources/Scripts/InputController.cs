@@ -3,20 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+// Handles communication between heroes after input
 public class InputController : Singleton<InputController>
 {
 
     private List<Hero> heroList = new List<Hero>();
-
-    public bool GetLeftClick()
-    {
-        return Input.GetMouseButtonDown(0);
-    }
-
-    public bool GetRightClick()
-    {
-        return Input.GetMouseButtonDown(1);
-    }
 
     public void RegisterHero(Hero hero)
     {
