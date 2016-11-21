@@ -24,10 +24,12 @@ public class Hero : MonoBehaviour
     {
         if (InputController.instance.GetLeftClick())
         {
+            InputController.instance.ClearMenuSelection();
             ToggleMenu(!isMenuShowing);
         }
         if (InputController.instance.GetRightClick())
         {
+            InputController.instance.ClearMenuSelection();
             UseActive();
         }
     }
@@ -35,11 +37,7 @@ public class Hero : MonoBehaviour
     public void ToggleMenu(bool toggle)
     {
         isMenuShowing = toggle;
-
-        if(isMenuShowing)
-        {
-            menu.SetActive(isMenuShowing);
-        }
+        menu.SetActive(isMenuShowing);
     }
 
     private void UseActive()
