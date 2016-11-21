@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 5da54d93f7278524b9d1c5b3f1bb52db
-timeCreated: 1479705992
+timeCreated: 1479706322
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: TempHero_0
+    21300002: TempHero_1
+    21300004: TempHero_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,20 +41,59 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 250
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: TempHero_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1060
+        width: 766
+        height: 530
+      alignment: 9
+      pivot: {x: 0.46965313, y: 0.4291497}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TempHero_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 530
+        width: 766
+        height: 530
+      alignment: 9
+      pivot: {x: 0.46265003, y: 0.4763832}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TempHero_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 766
+        height: 530
+      alignment: 9
+      pivot: {x: 0.44864386, y: 0.4561404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

@@ -78,11 +78,11 @@ public class HeroAttackSector : MonoBehaviour
     {
         if (enabled)
         {
-            spriteRenderer.material = greenMat;
+           // spriteRenderer.material = greenMat;
         }
         else
         {
-            spriteRenderer.material = yellowMat;
+           // spriteRenderer.material = yellowMat;
         }
         attackReady = enabled;
     }
