@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class WhirlwindSkill : ActiveSkill {
+public class WhirlwindSkill : AbstractSkill {
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -12,4 +13,10 @@ public class WhirlwindSkill : ActiveSkill {
 	void Update () {
 	
 	}
+
+    public override void ExecuteActive()
+    {
+        throw new NotImplementedException();
+    }
+
 }
