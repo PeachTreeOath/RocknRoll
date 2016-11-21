@@ -901,7 +901,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010150543444, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 4000010150543444, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_LocalPosition.y
@@ -934,6 +934,11 @@ Prefab:
     - target: {fileID: 1000011393506986, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_Name
       value: TestHero (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011308352660, guid: a50cb9e312008644c8865ead67430a63,
+        type: 2}
+      propertyPath: impulseStrength
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a50cb9e312008644c8865ead67430a63, type: 2}
