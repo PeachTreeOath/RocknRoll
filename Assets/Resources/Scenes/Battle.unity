@@ -175,7 +175,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1001 &200134254
 Prefab:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &248168185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,7 +924,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010150543444, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4000010150543444, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_LocalRotation.x
@@ -949,10 +949,6 @@ Prefab:
     - target: {fileID: 1000011393506986, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_Name
       value: TestHero (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: impulseStrength
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1000011393506986, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_IsActive
@@ -1325,7 +1321,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010150543444, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010150543444, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_LocalRotation.x

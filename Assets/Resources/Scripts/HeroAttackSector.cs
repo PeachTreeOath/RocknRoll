@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class HeroAttackSector : MonoBehaviour
 {
@@ -41,12 +42,12 @@ public class HeroAttackSector : MonoBehaviour
         {
             ReadyAttack(true);
         }
-     
+
         if (attackReady && collidedList.Count > 0)
         {
 
             lastAttackTime = Time.time;
-            foreach(GameObject attackedObj in collidedList)
+            foreach (GameObject attackedObj in collidedList)
             {
                 Vector2 direction = attackedObj.transform.position - transform.position;
                 attackedObj.GetComponent<IAttackable>().ReceiveAttack(direction, impulseStrength, jitterScale);
@@ -78,11 +79,11 @@ public class HeroAttackSector : MonoBehaviour
     {
         if (enabled)
         {
-           // spriteRenderer.material = greenMat;
+            // spriteRenderer.material = greenMat;
         }
         else
         {
-           // spriteRenderer.material = yellowMat;
+            // spriteRenderer.material = yellowMat;
         }
         attackReady = enabled;
     }

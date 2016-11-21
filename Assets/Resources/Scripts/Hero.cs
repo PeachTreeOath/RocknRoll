@@ -25,7 +25,6 @@ public class Hero : MonoBehaviour, IPointerClickHandler
 
     public void ToggleMenu(bool toggle)
     {
-        Debug.Log(isMenuShowing +" "+ toggle);
         isMenuShowing = toggle;
         menu.SetActive(isMenuShowing);
     }
@@ -45,8 +44,9 @@ public class Hero : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            bool tempIsMenuShowing = !isMenuShowing;
             InputController.instance.ClearMenuSelection();
-            ToggleMenu(!isMenuShowing);
+            ToggleMenu(tempIsMenuShowing);
         }
         if (eventData.button == PointerEventData.InputButton.Right)
         {
