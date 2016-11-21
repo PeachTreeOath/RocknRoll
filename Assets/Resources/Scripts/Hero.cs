@@ -6,6 +6,7 @@ public class Hero : MonoBehaviour
 
     public GameObject menu;
 
+    private AbstractSkill activeSkill;
     private bool isMenuShowing;
 
     // Use this for initialization
