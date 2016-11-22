@@ -75,6 +75,11 @@ public class HeroAttackSector : MonoBehaviour
         }
     }
 
+    public void Toggle(bool toggle)
+    {
+        GetComponent<CircleCollider2D>().enabled = toggle;
+    }
+
     private void ReadyAttack(bool enabled)
     {
         if (enabled)

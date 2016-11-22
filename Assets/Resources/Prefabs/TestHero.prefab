@@ -265,6 +265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1000012238783666}
+  whirlwindPrefab: {fileID: 1000011473133452, guid: d52969739bc5239429036e392a617046,
+    type: 2}
 --- !u!114 &114000013855553252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -371,7 +373,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5da54d93f7278524b9d1c5b3f1bb52db, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 5da54d93f7278524b9d1c5b3f1bb52db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

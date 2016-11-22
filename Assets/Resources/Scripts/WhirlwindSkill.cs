@@ -2,21 +2,37 @@
 using System.Collections;
 using System;
 
-public class WhirlwindSkill : AbstractSkill {
+public class WhirlwindSkill : AbstractSkill
+{
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public RuntimeAnimatorController animator;
+
+    public void Update()
+    {
+
+    }
 
     public override void ExecuteActive()
     {
-        throw new NotImplementedException();
+        gameObject.SetActive(true);
+        hero.GetComponent<Animator>().runtimeAnimatorController = animator;
     }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        IAttackable obj = col.GetComponent<IAttackable>();
+        if (obj != null)
+        {
+            col.GetComponent<Rigidbody2D>().drag = 10;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        IAttackable obj = col.GetComponent<IAttackable>();
+        if (obj != null)
+        {
+            col.GetComponent<Rigidbody2D>().drag = 0;
+        }
+    }
 }
