@@ -7,15 +7,31 @@ public class WhirlwindSkill : AbstractSkill
 
     public RuntimeAnimatorController animator;
 
-    public void Update()
+    protected override void Update()
     {
-
+        base.Update();
+        if(!isExecuting)
+        {
+            StopActive();
+        }
     }
 
-    public override void ExecuteActive()
+    public override void ExecuteActive(ActiveFinished callback)
     {
+        this.callback = callback;
         gameObject.SetActive(true);
         hero.GetComponent<Animator>().runtimeAnimatorController = animator;
+        StartTimer();
+    }
+
+    public override void StopActive()
+    {
+        hero.GetComponent<Animator>().runtimeAnimatorController = hero.defaultAnimator;
+        if (callback != null)
+        {
+            callback();
+        }
+        gameObject.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D col)

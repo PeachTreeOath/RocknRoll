@@ -7,13 +7,18 @@ using System.Collections.Generic;
 public class Hero : MonoBehaviour, IPointerClickHandler
 {
 
+    // These defaults are used to reset a hero back to its original state once an active is complete
+    [HideInInspector]
+    public Sprite defaultSprite;
+    [HideInInspector]
+    public RuntimeAnimatorController defaultAnimator;
+
     public GameObject menu;
     public GameObject whirlwindPrefab;
+
     private AbstractSkill activeSkill;
     private HeroAttackSector[] attackSectors;
     private bool isMenuShowing;
-    private Sprite defaultSprite;
-    private RuntimeAnimatorController defaultAnimator;
     private float radius;
 
     // Use this for initialization
@@ -56,7 +61,7 @@ public class Hero : MonoBehaviour, IPointerClickHandler
         {
             sector.Toggle(false);
         }
-        activeSkill.ExecuteActive();
+        activeSkill.ExecuteActive(StopActive);
     }
 
     private void StopActive()
