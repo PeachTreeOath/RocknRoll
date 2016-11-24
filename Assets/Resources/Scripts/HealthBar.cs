@@ -28,12 +28,13 @@ public class HealthBar : MonoBehaviour {
             Debug.LogError("Couldn't load lifebar animation. Ensure component has an animation attached with the correct animation clip name");
         }
         curHp = totalHp;
+        Debug.Log("Anim state name " + animName);
     }
 
     void Start() {
         lastPPos = transform.position;
         anim.speed = 0;
-        anim.Play(animName, -1, hpToTime(curHp));
+        anim.Play(animName, 0, hpToTime(curHp));
     }
 
     void Update() {
@@ -62,7 +63,7 @@ public class HealthBar : MonoBehaviour {
             t = 0.99f;
             //TODO kill
         }
-        anim.Play(animName, -1, t);
+        anim.Play(animName, 0, t);
     }
 
     /// <summary>
