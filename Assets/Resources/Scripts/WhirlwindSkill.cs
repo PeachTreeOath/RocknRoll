@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class WhirlwindSkill : AbstractSkill
 {
 
     public RuntimeAnimatorController animator;
+
+    protected List<GameObject> collidedList = new List<GameObject>();
 
     protected override void Update()
     {
@@ -39,7 +42,8 @@ public class WhirlwindSkill : AbstractSkill
         IAttackable obj = col.GetComponent<IAttackable>();
         if (obj != null)
         {
-            col.GetComponent<Rigidbody2D>().drag = 10;
+            obj.ReceiveDragChange(10);
+            collidedList.Add(col.gameObject);
         }
     }
 
@@ -48,7 +52,8 @@ public class WhirlwindSkill : AbstractSkill
         IAttackable obj = col.GetComponent<IAttackable>();
         if (obj != null)
         {
-            col.GetComponent<Rigidbody2D>().drag = 0;
+            obj.ReceiveDragChange(0);
+            collidedList.Remove(col.gameObject);
         }
     }
 }

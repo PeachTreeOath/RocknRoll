@@ -19,7 +19,7 @@ public class HeroAttackSector : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Collider2D col;
 
-    private List<GameObject> collidedList;
+    private List<GameObject> collidedList = new List<GameObject>();
 
     // Use this for initialization
     void Start()
@@ -29,7 +29,6 @@ public class HeroAttackSector : MonoBehaviour
         greenMat = Resources.Load<Material>("Materials/GreenMat");
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
-        collidedList = new List<GameObject>();
 
         ReadyAttack(true);
     }
@@ -50,7 +49,7 @@ public class HeroAttackSector : MonoBehaviour
             foreach (GameObject attackedObj in collidedList)
             {
                 Vector2 direction = attackedObj.transform.position - transform.position;
-                attackedObj.GetComponent<IAttackable>().ReceiveAttack(direction, impulseStrength, jitterScale);
+                attackedObj.GetComponent<IAttackable>().ReceiveForce(direction, impulseStrength, jitterScale);
             }
             collidedList.Clear();
             ReadyAttack(false);

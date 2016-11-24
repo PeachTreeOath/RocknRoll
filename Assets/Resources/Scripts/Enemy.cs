@@ -19,10 +19,23 @@ public class Enemy : MonoBehaviour, IAttackable
 
     }
 
-    public void ReceiveAttack(Vector2 direction, float impulseStrength, float jitterScale)
+    public void ReceiveForce(Vector2 direction, float impulseStrength, float jitterScale)
     {
         Vector2 jitterVector = UnityEngine.Random.insideUnitCircle * jitterScale;
         rBody.velocity = jitterVector + direction + (direction.normalized * impulseStrength);
         //rBody.AddForce(direction * impulseStrength, ForceMode2D.Impulse);
+    }
+
+    public void ReceiveDragChange(float drag)
+    {
+        rBody.drag = drag;
+    }
+
+    // Strength is a value between 0-1 used for lerping. Since this function is probably called
+    // every frame, set this to a low number for a slow vacuum.
+    public void ReceiveVacuum(Vector2 source, float strength)
+    {
+        Vector2 newPos = Vector2.Lerp(transform.position, source, strength);
+        transform.position = newPos;
     }
 }
