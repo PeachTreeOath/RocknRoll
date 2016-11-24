@@ -631,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &521944664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,6 +1211,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010434508852, guid: a50cb9e312008644c8865ead67430a63,
+        type: 2}
+      propertyPath: DMG_PER_HIT
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a50cb9e312008644c8865ead67430a63, type: 2}
   m_IsPrefabParent: 0
@@ -1397,6 +1402,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1297517463 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31,
+    type: 2}
+  m_PrefabInternal: {fileID: 462573150}
+--- !u!114 &1297517470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297517463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f80e7d2055e1d479ba3713513e6a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hbPrefab: {fileID: 1000011844456644, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
+  animName: lifebar
+  totalHp: 50
 --- !u!1001 &1303214215
 Prefab:
   m_ObjectHideFlags: 0
@@ -1440,9 +1464,14 @@ Prefab:
       propertyPath: m_Name
       value: TestEnemy (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
 --- !u!1001 &1377512898
 Prefab:
   m_ObjectHideFlags: 0
@@ -1554,6 +1583,27 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010367421778, guid: bac2e8be54c28d046af43f607cbfd6e2,
     type: 2}
   m_PrefabInternal: {fileID: 1865219060}
+=======
+--- !u!1 &1320437074 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31,
+    type: 2}
+  m_PrefabInternal: {fileID: 1051536262}
+--- !u!114 &1320437081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320437074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f80e7d2055e1d479ba3713513e6a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hbPrefab: {fileID: 1000011844456644, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
+  animName: lifebar
+  totalHp: 50
+>>>>>>> origin/master
 --- !u!1 &1500122211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,6 +1715,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1500122211}
+<<<<<<< HEAD
 --- !u!1001 &1516277550
 Prefab:
   m_ObjectHideFlags: 0
@@ -1786,6 +1837,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bac2e8be54c28d046af43f607cbfd6e2, type: 2}
   m_IsPrefabParent: 0
+=======
+--- !u!1 &1514203737 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31,
+    type: 2}
+  m_PrefabInternal: {fileID: 772494045}
+--- !u!114 &1514203744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514203737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f80e7d2055e1d479ba3713513e6a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hbPrefab: {fileID: 1000011844456644, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
+  animName: lifebar
+  totalHp: 50
+--- !u!1 &1535742237 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31,
+    type: 2}
+  m_PrefabInternal: {fileID: 11969346}
+--- !u!114 &1535742244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535742237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f80e7d2055e1d479ba3713513e6a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hbPrefab: {fileID: 1000011844456644, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
+  animName: lifebar
+  totalHp: 50
+>>>>>>> origin/master
 --- !u!1 &1567823724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,6 +1951,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1567823724}
+<<<<<<< HEAD
 --- !u!1001 &1608124879
 Prefab:
   m_ObjectHideFlags: 0
@@ -1918,6 +2010,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bac2e8be54c28d046af43f607cbfd6e2, type: 2}
   m_IsPrefabParent: 0
+=======
+--- !u!1 &1579894865 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31,
+    type: 2}
+  m_PrefabInternal: {fileID: 1265661900}
+--- !u!114 &1579894872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579894865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f80e7d2055e1d479ba3713513e6a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hbPrefab: {fileID: 1000011844456644, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
+  animName: lifebar
+  totalHp: 50
+--- !u!1 &1599825558 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31,
+    type: 2}
+  m_PrefabInternal: {fileID: 200134254}
+--- !u!114 &1599825565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1599825558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f80e7d2055e1d479ba3713513e6a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hbPrefab: {fileID: 1000011844456644, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
+  animName: lifebar
+  totalHp: 50
+>>>>>>> origin/master
 --- !u!1 &1827429614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,6 +2334,7 @@ Prefab:
       propertyPath: m_Name
       value: TestHero (1)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 4000010150543444, guid: a50cb9e312008644c8865ead67430a63, type: 2}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -2259,9 +2392,15 @@ Prefab:
     - target: {fileID: 4000010941380600, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
       propertyPath: m_LocalScale.x
       value: 4
+=======
+    - target: {fileID: 114000010434508852, guid: a50cb9e312008644c8865ead67430a63,
+        type: 2}
+      propertyPath: DMG_PER_HIT
+      value: 3
+>>>>>>> origin/master
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: a50cb9e312008644c8865ead67430a63, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2129763220
 GameObject:

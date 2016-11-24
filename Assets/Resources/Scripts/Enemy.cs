@@ -38,4 +38,11 @@ public class Enemy : MonoBehaviour, IAttackable
         Vector2 newPos = Vector2.Lerp(transform.position, source, strength);
         transform.position = newPos;
     }
+
+    public void ReceiveDmg(float amt) {
+        HealthBar hb = GetComponentInChildren<HealthBar>();
+        if (hb != null) {
+            hb.changeHealth(amt);
+        }
+    }
 }
