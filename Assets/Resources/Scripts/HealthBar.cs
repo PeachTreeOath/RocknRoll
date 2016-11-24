@@ -28,7 +28,7 @@ public class HealthBar : MonoBehaviour {
             Debug.LogError("Couldn't load lifebar animation. Ensure component has an animation attached with the correct animation clip name");
         }
         curHp = totalHp;
-        Debug.Log("Anim state name " + animName);
+        //Debug.Log("Anim state name " + animName);
     }
 
     void Start() {
