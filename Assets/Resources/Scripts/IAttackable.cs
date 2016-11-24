@@ -8,4 +8,6 @@ public interface IAttackable {
     void ReceiveDragChange(float drag);
 
     void ReceiveVacuum(Vector2 source, float strength);
+
+    void ReceiveDmg(float amt);
 }

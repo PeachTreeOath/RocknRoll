@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class HeroAttackSector : MonoBehaviour
 {
 
+    public float DMG_PER_HIT = 1;
     public float autoAttackCooldown = 2;
     public float impulseStrength;
     public float jitterScale = .1f;
@@ -49,7 +50,9 @@ public class HeroAttackSector : MonoBehaviour
             foreach (GameObject attackedObj in collidedList)
             {
                 Vector2 direction = attackedObj.transform.position - transform.position;
-                attackedObj.GetComponent<IAttackable>().ReceiveForce(direction, impulseStrength, jitterScale);
+                IAttackable atk = attackedObj.GetComponent<IAttackable>();
+                atk.ReceiveForce(direction, impulseStrength, jitterScale);
+                atk.ReceiveDmg(DMG_PER_HIT);
             }
             collidedList.Clear();
             ReadyAttack(false);

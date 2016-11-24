@@ -15,6 +15,7 @@ public class SceneCleanup : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col)
     {
+        //Debug.Log("Destroying " + col.gameObject.name);
         Destroy(col.gameObject);
     }
 }
