@@ -103,9 +103,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011393506986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5797094, y: -0.831426, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02, y: -1.97, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013341574034}
@@ -220,7 +220,7 @@ Animator:
   m_GameObject: {fileID: 1000011393506986}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a287c8f0c47ae4246bd5b2a4c0275a56, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2a6e7da151c7124428b897d96dd9482a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a6c6c2cae28b549af7a47d53bb9f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DMG_PER_HIT: 1
   autoAttackCooldown: 0
   impulseStrength: 8
   jitterScale: 0.1
@@ -265,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 0}
+  animator: {fileID: 0}
   defaultAnimator: {fileID: 0}
   menu: {fileID: 1000012238783666}
   whirlwindPrefab: {fileID: 1000011006998676, guid: 789d68734ce586645966a8b2f71c9be3,
