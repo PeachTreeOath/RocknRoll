@@ -13,7 +13,7 @@ public class WhirlwindSkill : AbstractSkill
     protected override void Update()
     {
         base.Update();
-        if(!isExecuting)
+        if (!isExecuting)
         {
             StopActive();
         }
@@ -30,7 +30,7 @@ public class WhirlwindSkill : AbstractSkill
     public override void StopActive()
     {
         hero.animator.runtimeAnimatorController = hero.defaultAnimator;
-        foreach(GameObject col in collidedList)
+        foreach (GameObject col in collidedList)
         {
             IAttackable obj = col.GetComponent<IAttackable>();
             if (obj != null)
