@@ -37,7 +37,6 @@ public class Hero : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
     }
 
