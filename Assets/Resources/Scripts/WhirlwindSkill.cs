@@ -30,6 +30,16 @@ public class WhirlwindSkill : AbstractSkill
     public override void StopActive()
     {
         hero.animator.runtimeAnimatorController = hero.defaultAnimator;
+        foreach(GameObject col in collidedList)
+        {
+            IAttackable obj = col.GetComponent<IAttackable>();
+            if (obj != null)
+            {
+                obj.ReceiveDragChange(0);
+            }
+
+        }
+
         if (callback != null)
         {
             callback();

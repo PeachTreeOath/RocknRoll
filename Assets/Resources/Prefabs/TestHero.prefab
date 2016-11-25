@@ -269,7 +269,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   defaultAnimator: {fileID: 0}
   menu: {fileID: 1000012238783666}
-  whirlwindPrefab: {fileID: 1000011473133452, guid: 032d4cf2de067f241b630b405070f893,
+  whirlwindPrefab: {fileID: 1000011473133452, guid: f4681641996f7e14cab50804472b6650,
     type: 2}
 --- !u!114 &114000013855553252
 MonoBehaviour:
