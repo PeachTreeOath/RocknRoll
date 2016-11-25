@@ -11,6 +11,7 @@ public class Hero : MonoBehaviour, IPointerClickHandler
     [HideInInspector]
     public Sprite defaultSprite;
     [HideInInspector]
+    public Animator animator;
     public RuntimeAnimatorController defaultAnimator;
 
     public GameObject menu;
@@ -19,14 +20,15 @@ public class Hero : MonoBehaviour, IPointerClickHandler
     private AbstractSkill activeSkill;
     private HeroAttackSector[] attackSectors;
     private bool isMenuShowing;
-    private float radius;
+    private bool isAttacking;
 
     // Use this for initialization
     void Start()
     {
         attackSectors = GetComponentsInChildren<HeroAttackSector>();
         defaultSprite = GetComponent<SpriteRenderer>().sprite;
-        defaultAnimator = GetComponent<Animator>().runtimeAnimatorController;
+        animator = GetComponent<Animator>();
+        defaultAnimator = animator.runtimeAnimatorController;
         InputController.instance.RegisterHero(this);
 
         CreateSkills();
@@ -35,9 +37,10 @@ public class Hero : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
     }
-    
+
     public void ToggleMenu(bool toggle)
     {
         isMenuShowing = toggle;
@@ -57,7 +60,7 @@ public class Hero : MonoBehaviour, IPointerClickHandler
 
     private void UseActive()
     {
-        foreach(HeroAttackSector sector in attackSectors)
+        foreach (HeroAttackSector sector in attackSectors)
         {
             sector.Toggle(false);
         }
@@ -86,4 +89,11 @@ public class Hero : MonoBehaviour, IPointerClickHandler
             UseActive();
         }
     }
+
+    public void StartAutoAttack()
+    {
+        animator.Play("Attack");
+        isAttacking = true;
+    }
+
 }

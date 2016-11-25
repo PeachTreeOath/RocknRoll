@@ -23,13 +23,13 @@ public class WhirlwindSkill : AbstractSkill
     {
         this.callback = callback;
         gameObject.SetActive(true);
-        hero.GetComponent<Animator>().runtimeAnimatorController = animator;
+        hero.animator.runtimeAnimatorController = animator;
         StartTimer();
     }
 
     public override void StopActive()
     {
-        hero.GetComponent<Animator>().runtimeAnimatorController = hero.defaultAnimator;
+        hero.animator.runtimeAnimatorController = hero.defaultAnimator;
         if (callback != null)
         {
             callback();

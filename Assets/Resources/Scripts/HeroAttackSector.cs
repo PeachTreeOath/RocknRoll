@@ -19,6 +19,7 @@ public class HeroAttackSector : MonoBehaviour
     private Material greenMat;
     private SpriteRenderer spriteRenderer;
     private Collider2D col;
+    private Hero hero;
 
     private List<GameObject> collidedList = new List<GameObject>();
 
@@ -30,6 +31,7 @@ public class HeroAttackSector : MonoBehaviour
         greenMat = Resources.Load<Material>("Materials/GreenMat");
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+        hero = transform.parent.GetComponent<Hero>();
 
         ReadyAttack(true);
     }
@@ -54,6 +56,7 @@ public class HeroAttackSector : MonoBehaviour
                 atk.ReceiveForce(direction, impulseStrength, jitterScale);
                 atk.ReceiveDmg(DMG_PER_HIT);
             }
+            hero.StartAutoAttack();
             collidedList.Clear();
             ReadyAttack(false);
         }
