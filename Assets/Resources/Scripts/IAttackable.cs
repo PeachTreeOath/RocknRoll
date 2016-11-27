@@ -3,7 +3,7 @@ using System.Collections;
 
 public interface IAttackable {
 
-    void ReceiveForce(Vector2 direction, float forceStrength, float jitterScale);
+    void ReceiveForce(CustomPhysics phys,  Vector2 surfaceNormal, Vector2 forceDirection, float forceStrength, out Vector2 forceOut);
 
     void ReceiveDragChange(float drag);
 

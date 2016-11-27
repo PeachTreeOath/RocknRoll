@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(CustomPhysics))]
 public class Hero : MonoBehaviour, IPointerClickHandler
 {
 
@@ -26,6 +27,10 @@ public class Hero : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         attackSectors = GetComponentsInChildren<HeroAttackSector>();
+        foreach (HeroAttackSector h in attackSectors) {
+            h.assignedHero = gameObject;
+        }
+
         defaultSprite = GetComponent<SpriteRenderer>().sprite;
         animator = GetComponent<Animator>();
         defaultAnimator = animator.runtimeAnimatorController;

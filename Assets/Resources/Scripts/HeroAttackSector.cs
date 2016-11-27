@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
-public class HeroAttackSector : MonoBehaviour
-{
+public class HeroAttackSector : MonoBehaviour {
 
     public float DMG_PER_HIT = 1;
     public float autoAttackCooldown = 2;
@@ -14,6 +13,8 @@ public class HeroAttackSector : MonoBehaviour
     private float lastAttackTime;
     private bool attackReady;
 
+    public GameObject assignedHero;
+
     //TODO clean this up
     private Material yellowMat;
     private Material greenMat;
@@ -21,11 +22,10 @@ public class HeroAttackSector : MonoBehaviour
     private Collider2D col;
     private Hero hero;
 
-    private List<GameObject> collidedList = new List<GameObject>();
+    private List<KeyValuePair<GameObject, ContactPoint2D>> collidedList = new List<KeyValuePair<GameObject, ContactPoint2D>>();
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         // TODO: Colors are just for testing
         yellowMat = Resources.Load<Material>("Materials/YellowMat");
         greenMat = Resources.Load<Material>("Materials/GreenMat");
@@ -37,23 +37,23 @@ public class HeroAttackSector : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
-        if (!attackReady && Time.time - lastAttackTime > autoAttackCooldown)
-        {
+        if (!attackReady && Time.time - lastAttackTime > autoAttackCooldown) {
             ReadyAttack(true);
         }
 
-        if (attackReady && collidedList.Count > 0)
-        {
+        if (attackReady && collidedList.Count > 0) {
 
             lastAttackTime = Time.time;
-            foreach (GameObject attackedObj in collidedList)
-            {
+            foreach (KeyValuePair<GameObject, ContactPoint2D> kvp in collidedList) {
+                GameObject attackedObj = kvp.Key;
+                ContactPoint2D cpt = kvp.Value;
                 Vector2 direction = attackedObj.transform.position - transform.position;
                 IAttackable atk = attackedObj.GetComponent<IAttackable>();
-                atk.ReceiveForce(direction, impulseStrength, jitterScale);
+                CustomPhysics myPhysics = assignedHero.GetComponent<CustomPhysics>();
+                Vector2 outForce;
+                atk.ReceiveForce(myPhysics, cpt.normal, direction, impulseStrength, out outForce);
                 atk.ReceiveDmg(DMG_PER_HIT);
             }
             hero.StartAutoAttack();
@@ -62,21 +62,27 @@ public class HeroAttackSector : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        IAttackable obj = col.GetComponent<IAttackable>();
-        if (obj != null)
+    void OnTriggerEnter2D(Collider2D col) {
+        Debug.Log("Trigger Entered");
+        }
+
+    void OnCollisionEnter2D(Collision2D col) {
+        ContactPoint2D pt = col.contacts[0];
+        Debug.Log("Collision Enter");
+        if (col.gameObject != null)
         {
-            collidedList.Add(col.gameObject);
+            collidedList.Add(new KeyValuePair<GameObject, ContactPoint2D>(col.gameObject, pt));
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
+    //void OnTriggerExit2D(Collider2D col)
+    void OnCollisionExit2D(Collision2D col)
     {
-        IAttackable obj = col.GetComponent<IAttackable>();
+        Debug.Log("Collision Exit");
+        IAttackable obj = col.gameObject.GetComponent<IAttackable>();
         if (obj != null)
         {
-            collidedList.Remove(col.gameObject);
+            //collidedList.Remove(col.gameObject);
         }
     }
 
