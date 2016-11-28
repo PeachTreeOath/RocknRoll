@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomPhysicsMat {
+//TODO this doesn't need to be a monobehavior. make a scriptable object perhaps.
+public class CustomPhysicsMat : MonoBehaviour {
 
     [SerializeField]
     private float bounce; //0 to 1. 1 is fully elastic.
@@ -37,7 +38,7 @@ public class CustomPhysicsMat {
         //average of the properties of each input material as a function of the input force.  I have no idea if that is actually true 
         //since I just made all that up.
 
-        Vector2 tangent = new Vector2(surfaceNormal.y, surfaceNormal.x);
+        Vector2 tangent = new Vector2(-surfaceNormal.y, surfaceNormal.x);
         float b = (bounce + other.bounce) / 2;
         float fr = (friction + other.friction) / 2;
 

@@ -21,7 +21,8 @@ public class Enemy : MonoBehaviour, IAttackable
     {
         physicsLayer = LayerMask.GetMask("Physics");
         collider = GetComponent<Collider2D>();
-        maxExtent = collider.bounds.extents.magnitude + 0.01f; //e.g. radius
+        //maxExtent = collider.bounds.extents.magnitude + 0.01f; //e.g. radius
+        maxExtent = (collider.bounds.extents.x + collider.bounds.extents.x + 0.01f) / 2; //e.g. radius, approximate
         phys = GetComponent<CustomPhysics>();
         positionLastFrame = transform.position;
         positionAfterUpdateCalculated = false;
@@ -43,7 +44,7 @@ public class Enemy : MonoBehaviour, IAttackable
     void LateUpdate() {
         positionLastFrame = transform.position;
         transform.position = positionAfterUpdate;
-        netForceToApplyWc = Vector2.zero; //reset for next frame
+        //netForceToApplyWc = Vector2.zero; //reset for next frame
     }
 
     /// <summary>
@@ -92,9 +93,20 @@ public class Enemy : MonoBehaviour, IAttackable
         //for (int i = 0; i < results; i++) {
             if (hitInfo[i]) {
                 if (collider.bounds.Intersects(hitInfo[i].collider.bounds)) {
-                //if (collider.IsTouching(hitInfo[i].collider)) {
+                //if (collider.IsTouching(hitInfo[i].collider)) { //only works with physics
                     Debug.Log("Hit some shit: " + hitInfo[i].collider.gameObject.name);
                     goHit = hitInfo[i].collider.gameObject;
+                    CustomPhysics gop = goHit.GetComponent<CustomPhysics>();
+                    if (gop != null) {
+                        Vector2 hitPt = collider.bounds.ClosestPoint(goHit.transform.position);
+                        Vector2 n = (hitPt - (Vector2)goHit.transform.position).normalized;
+                        Vector2 v = new Vector2(0f, 1.0f);//TODO
+                        Vector2 myForceOut;
+                        Vector2 otherForceOut;
+                        gop.curMat.collide(phys.curMat, n, v, out myForceOut, out otherForceOut);
+                        Debug.Log("MyForceOut=" + myForceOut);
+                        positionAfterUpdate += myForceOut;
+                    }
                 }
             }
         }

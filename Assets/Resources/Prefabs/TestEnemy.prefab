@@ -24,7 +24,8 @@ GameObject:
   - 114: {fileID: 114000010639908838}
   - 58: {fileID: 58000013151517996}
   - 114: {fileID: 114000012828172756}
-  m_Layer: 0
+  - 114: {fileID: 114000010947957634}
+  m_Layer: 9
   m_Name: TestEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +84,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b33338e19959384c80fbc54dcc375d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000010947957634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014161524664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f549a38a387f3e948adf1c669e198a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounce: 0.25
+  friction: 0.5
+  aeroCoeff: 0
+  bouyancy: 0
+  attract: 0
+  attractDist: 0
+  repel: 0
+  repelDist: 0
 --- !u!114 &114000012828172756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72d1d8392767c74dbe8f776b4157337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curMat: {fileID: 0}
 --- !u!212 &212000010198367426
 SpriteRenderer:
   m_ObjectHideFlags: 1

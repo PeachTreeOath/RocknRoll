@@ -12,5 +12,11 @@ public class CustomPhysics : MonoBehaviour{
 
     public CustomPhysicsMat curMat;
 
+    void Start() {
+        //TODO
+        if (curMat == null) {
+            curMat = GetComponent<CustomPhysicsMat>();
+        }
+    }
 
 }

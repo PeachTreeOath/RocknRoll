@@ -40,7 +40,9 @@ GameObject:
   - 114: {fileID: 114000013068199408}
   - 58: {fileID: 58000014127561050}
   - 95: {fileID: 95000011175193960}
-  m_Layer: 0
+  - 114: {fileID: 114000010991984714}
+  - 114: {fileID: 114000010305418102}
+  m_Layer: 9
   m_Name: TestHero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +59,7 @@ GameObject:
   - 4: {fileID: 4000013341574034}
   - 114: {fileID: 114000010434508852}
   - 58: {fileID: 58000012099325746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackSector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,6 +212,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010305418102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011393506986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f549a38a387f3e948adf1c669e198a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounce: 0.5
+  friction: 0.2
+  aeroCoeff: 0
+  bouyancy: 0
+  attract: 0
+  attractDist: 0
+  repel: 0
+  repelDist: 0
 --- !u!114 &114000010434508852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,6 +258,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8611af37a9f704940854aa74de3ad735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000010991984714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011393506986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72d1d8392767c74dbe8f776b4157337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curMat: {fileID: 0}
 --- !u!114 &114000013068199408
 MonoBehaviour:
   m_ObjectHideFlags: 1

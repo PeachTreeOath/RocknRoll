@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000012417968610}
   - 114: {fileID: 114000012459902974}
   - 61: {fileID: 61000013097737650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InputController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,3 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469670f6df05a914b93a97575c2fea51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelecting: 0
