@@ -11,10 +11,15 @@ public class Enemy : MonoBehaviour, IAttackable
     private float maxExtent;
     private CustomPhysics phys;
 
+    private float myMass = 0.01f;
     private Vector2 positionLastFrame;
-    private Vector2 netForceToApplyWc;
+    private Vector2 velocityLastFrame;
+    private Vector2 accelLastFrame;
+    private Vector2 netAccelToApplyWc;
     private Vector2 positionAfterUpdate;
     private bool positionAfterUpdateCalculated;
+
+    private Vector2 gravityAccel = new Vector2(0, -0.1f);
 
     // Use this for initialization
     void Start()
@@ -26,25 +31,29 @@ public class Enemy : MonoBehaviour, IAttackable
         phys = GetComponent<CustomPhysics>();
         positionLastFrame = transform.position;
         positionAfterUpdateCalculated = false;
-        netForceToApplyWc = Vector2.zero;
+        netAccelToApplyWc = Vector2.zero;
+        velocityLastFrame = Vector2.zero;
+        accelLastFrame = gravityAccel;
     }
 
     // Update is called once per frame
     void Update()
     {
         //apply gravity
-        netForceToApplyWc += new Vector2(0, -0.01f); //This may need to be applied later, maybe in late update?
+        //netAccelToApplyWc; += new Vector2(0, -0.01f); //This may need to be applied later, maybe in late update?
         Vector2 nextPos = getNextPosition();
         checkCollisions(nextPos);
+        adjustNextPosition(netAccelToApplyWc);
 
 
 
     }
 
     void LateUpdate() {
+        velocityLastFrame = (positionAfterUpdate - (Vector2)transform.position) / Time.deltaTime; //TODO time is off by 1 frame
         positionLastFrame = transform.position;
         transform.position = positionAfterUpdate;
-        //netForceToApplyWc = Vector2.zero; //reset for next frame
+        netAccelToApplyWc = Vector2.zero;
     }
 
     /// <summary>
@@ -53,14 +62,30 @@ public class Enemy : MonoBehaviour, IAttackable
     /// of the current frame.
     /// </summary>
     public Vector2 getNextPosition() {
-        
-        Vector2 mvDirection = (Vector2) transform.position - positionLastFrame;
-        Vector2 pos = (Vector2) transform.position + netForceToApplyWc;
+
+        //Vector2 mvDirection = (Vector2) transform.position - positionLastFrame;
+        //Vector2 pos = (Vector2) transform.position + netAccelToApplyWc
+        //Vector2 pos = velocityLastFrame * Time.deltaTime + positionLastFrame;  // vt + p
+        Vector2 pos =  accelLastFrame * (0.5f * Mathf.Pow(Time.deltaTime, Time.deltaTime)) +
+                        velocityLastFrame * Time.deltaTime + 
+                        positionLastFrame;  // 1/2 at^2 + vt + p 
 
         positionAfterUpdate = pos;
         positionAfterUpdateCalculated = true;
         return positionAfterUpdate;
     }
+
+    public Vector2 adjustNextPosition(Vector2 accelUpdates) {
+        //This is prototype code only. 
+        Vector2 pos =  (accelLastFrame+accelUpdates) * (0.5f * Mathf.Pow(Time.deltaTime, Time.deltaTime)) +
+                        velocityLastFrame * Time.deltaTime + 
+                        positionLastFrame;  // 1/2 at^2 + vt + p 
+
+        positionAfterUpdate = pos;
+        positionAfterUpdateCalculated = true;
+        return positionAfterUpdate;
+    }
+
 
     /// <summary>
     /// Check for objects between the current position and the targetPos
@@ -68,7 +93,7 @@ public class Enemy : MonoBehaviour, IAttackable
     private void checkCollisions(Vector2 targetPos) {
         Vector2 dir = targetPos - (Vector2)transform.position;
         float dirLen = dir.magnitude;
-        float maxDist = dirLen * 20; //room for error
+        float maxDist = Math.Max(1, dirLen * 2); //room for error
         dir /= dirLen; //normalize
         //get two maximum extent points perpendicular to the direction. We will cast rays from here.
         Vector2 exMid = (Vector2) transform.position + maxExtent * dir;
@@ -79,13 +104,13 @@ public class Enemy : MonoBehaviour, IAttackable
         //cast from the center and one from each side along the current trajectory
         hitInfo[0] = Physics2D.Raycast(exMid, dir, maxDist, physicsLayer.value);
         //int results = collider.Raycast(dir, hitInfo, maxDist, physicsLayer.value);
-        Debug.DrawRay(exMid, dir, Color.cyan, 0.25f, false);
+        Debug.DrawRay(exMid, dir * maxDist, Color.cyan, 1.0f, false);
 
         hitInfo[1] = Physics2D.Raycast(ex1, dir, maxDist, physicsLayer.value);
-        Debug.DrawRay(ex1, dir, Color.green, 0.25f, false);
+        Debug.DrawRay(ex1, dir * maxDist, Color.green, 1.0f, false);
 
         hitInfo[2] = Physics2D.Raycast(ex2, dir, maxDist, physicsLayer.value);
-        Debug.DrawRay(ex2, dir, Color.red, 0.25f, false);
+        Debug.DrawRay(ex2, dir * maxDist, Color.red, 1.0f, false);
 
         //Debug.Log("Num results = " + results);
         GameObject goHit;
@@ -93,19 +118,22 @@ public class Enemy : MonoBehaviour, IAttackable
         //for (int i = 0; i < results; i++) {
             if (hitInfo[i]) {
                 if (collider.bounds.Intersects(hitInfo[i].collider.bounds)) {
-                //if (collider.IsTouching(hitInfo[i].collider)) { //only works with physics
-                    Debug.Log("Hit some shit: " + hitInfo[i].collider.gameObject.name);
+                    //if (collider.IsTouching(hitInfo[i].collider)) { //only works with physics
+                    Debug.Log("myBounds=" + collider.bounds);
+                    Debug.Log("otherBounds=" + hitInfo[i].collider.bounds);
+                    Debug.Log("Hit some shit: [" + i + "] =>" + hitInfo[i].collider.gameObject.name);
                     goHit = hitInfo[i].collider.gameObject;
                     CustomPhysics gop = goHit.GetComponent<CustomPhysics>();
                     if (gop != null) {
                         Vector2 hitPt = collider.bounds.ClosestPoint(goHit.transform.position);
                         Vector2 n = (hitPt - (Vector2)goHit.transform.position).normalized;
-                        Vector2 v = new Vector2(0f, 1.0f);//TODO
+                        Vector2 forceIn = velocityLastFrame * myMass; //TODO this is current V not V in the future when the collision happens
                         Vector2 myForceOut;
                         Vector2 otherForceOut;
-                        gop.curMat.collide(phys.curMat, n, v, out myForceOut, out otherForceOut);
+                        gop.curMat.collide(phys.curMat, n, forceIn, out myForceOut, out otherForceOut);
                         Debug.Log("MyForceOut=" + myForceOut);
-                        positionAfterUpdate += myForceOut;
+                        netAccelToApplyWc += myForceOut / myMass; // F = ma
+                        //Debug.Break();
                     }
                 }
             }

@@ -42,10 +42,11 @@ public class CustomPhysicsMat : MonoBehaviour {
         float b = (bounce + other.bounce) / 2;
         float fr = (friction + other.friction) / 2;
 
-        Vector2 forceAway = Vector2.Dot(forceIn, surfaceNormal)* forceIn;
-        Vector2 forceAlong = Vector2.Dot(forceIn, tangent) * forceIn;
+        Vector2 forceInDir = forceIn.normalized;
+        Vector2 forceAway = Vector2.Dot(forceInDir, surfaceNormal)* forceIn;
+        Vector2 forceAlong = Vector2.Dot(forceInDir, tangent) * forceIn;
 
-        incomingForceOut = forceAway * b + forceAlong * fr;
+        incomingForceOut = forceAway * b - forceAlong * fr;
         receivingForceOut = new Vector2(incomingForceOut.y, incomingForceOut.x);
     }
 
