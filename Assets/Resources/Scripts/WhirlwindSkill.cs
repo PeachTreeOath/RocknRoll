@@ -37,7 +37,6 @@ public class WhirlwindSkill : AbstractSkill
             {
                 obj.ReceiveDragChange(0);
             }
-
         }
 
         if (callback != null)

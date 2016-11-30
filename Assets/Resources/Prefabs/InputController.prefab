@@ -66,3 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469670f6df05a914b93a97575c2fea51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelecting: 0

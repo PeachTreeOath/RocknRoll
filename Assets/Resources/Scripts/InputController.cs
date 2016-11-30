@@ -12,6 +12,13 @@ public class InputController : Singleton<InputController>, IPointerClickHandler
 
     private List<Hero> heroList = new List<Hero>();
     private List<ISelectionListener> selectionListeners = new List<ISelectionListener>();
+    private BoxCollider2D boxCollider;
+
+    void Start()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider.enabled = false;
+    }
 
     public void RegisterHero(Hero hero)
     {
@@ -36,13 +43,17 @@ public class InputController : Singleton<InputController>, IPointerClickHandler
     public void RegisterSelectionListener(ISelectionListener listener)
     {
         selectionListeners.Add(listener);
+        boxCollider.enabled = true;
     }
 
+    // On click, all listeners are sent message and then list is cleared
     public void OnPointerClick(PointerEventData eventData)
     {
         foreach (ISelectionListener selectionListener in selectionListeners)
         {
-            selectionListener.OnSelection(eventData.position);
+            selectionListener.OnSelection(eventData.pointerCurrentRaycast.worldPosition);
         }
+        selectionListeners.Clear();
+        boxCollider.enabled = false;
     }
 }
