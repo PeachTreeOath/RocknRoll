@@ -1480,11 +1480,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012444694150, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -0.38
       objectReference: {fileID: 0}
     - target: {fileID: 4000012444694150, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.39
+      value: 3.99
       objectReference: {fileID: 0}
     - target: {fileID: 4000012444694150, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1510,30 +1510,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 58000013151517996, guid: 1dcb4d43c4154254db476e6670f12a31,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 58000013633982408, guid: 1dcb4d43c4154254db476e6670f12a31,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dcb4d43c4154254db476e6670f12a31, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1297517463 stripped
@@ -1716,25 +1693,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1500122211}
---- !u!1 &1528658365 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000014161524664, guid: 1dcb4d43c4154254db476e6670f12a31,
-    type: 2}
-  m_PrefabInternal: {fileID: 1265661900}
---- !u!114 &1528658372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1528658365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f80e7d2055e1d479ba3713513e6a5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hbPrefab: {fileID: 1000011844456644, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
-  animName: lifebar
-  totalHp: 50
 --- !u!1 &1567823724
 GameObject:
   m_ObjectHideFlags: 0

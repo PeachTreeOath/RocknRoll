@@ -25,6 +25,7 @@ GameObject:
   - 58: {fileID: 58000013151517996}
   - 114: {fileID: 114000012828172756}
   - 114: {fileID: 114000010947957634}
+  - 114: {fileID: 114000013593015164}
   m_Layer: 9
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014161524664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.23, y: 5.02, z: 0}
+  m_LocalPosition: {x: -1, y: 3.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -95,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f549a38a387f3e948adf1c669e198a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounce: 0.25
-  friction: 0.5
+  bounce: 1
+  friction: 0
   aeroCoeff: 0
   bouyancy: 0
   attract: 0
@@ -115,6 +116,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curMat: {fileID: 0}
+--- !u!114 &114000013593015164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014161524664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f80e7d2055e1d479ba3713513e6a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hbPrefab: {fileID: 1000011844456644, guid: 0e83cb6fe3d373649964e0ddf48c485d, type: 2}
+  animName: lifebar
+  totalHp: 50
 --- !u!212 &212000010198367426
 SpriteRenderer:
   m_ObjectHideFlags: 1
