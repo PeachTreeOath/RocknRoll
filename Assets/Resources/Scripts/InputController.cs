@@ -56,4 +56,8 @@ public class InputController : Singleton<InputController>, IPointerClickHandler
         selectionListeners.Clear();
         boxCollider.enabled = false;
     }
+
+    public Vector2 GetPointerPosition() {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 }

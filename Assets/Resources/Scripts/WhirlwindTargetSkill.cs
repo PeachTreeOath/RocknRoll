@@ -25,10 +25,12 @@ public class WhirlwindTargetSkill : WhirlwindSkill, ISelectionListener
     public override void ExecuteActive(ActiveFinished callback)
     {
         InputController.instance.RegisterSelectionListener(this);
+        startPreviewing();
     }
 
     public void OnSelection(Vector2 position)
     {
+        stopPreviewing();
         base.ExecuteActive(callback);
         srcPos = transform.position;
         destPos = position;
