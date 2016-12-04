@@ -69,5 +69,5 @@ MonoBehaviour:
   duration: 2
   cooldown: 10
   animator: {fileID: 9100000, guid: cfae78cd02ea6a14595485fc66dadaf8, type: 2}
-  previewPrefab: {fileID: 1000013065481532, guid: 5683275d92f034840872262de1643594,
+  previewPrefab: {fileID: 1000013065481532, guid: c7c737e29e6cd4245a38c06005f5f12b,
     type: 2}
